@@ -7,9 +7,11 @@ if [ "$OS_NAME" != "Linux Mint" ] && [ "$XDG_CURRENT_DESKTOP" != "cinnamon" ]; t
     exit 1
 fi
 
+
 # Remove unused startup applications
 sudo rm /etc/xdg/autostart/mintwelcome.desktop
 sudo rm /etc/xdg/autostart/mintupdate.desktop
+
 
 # Customize the panel
 ## Modify the panel's position
@@ -17,7 +19,7 @@ gsettings set org.cinnamon panels-enabled "['1:0:top']"
 gsettings set org.cinnamon panels-height ['1:30']
 # https://forums.linuxmint.com/viewtopic.php?t=285940
 
-## Install favourite applets ====================================================
+## Install favourite applets ===================================================
 cd ~/.local/share/cinnamon/applets/
 wget https://cinnamon-spices.linuxmint.com/files/applets/CinnVIIStarkMenu@NikoKrause.zip && unzip CinnVIIStarkMenu@NikoKrause.zip && rm CinnVIIStarkMenu@NikoKrause.zip
 wget https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip && unzip weather@mockturtl.zip && rm weather@mockturtl.zip
@@ -60,7 +62,7 @@ sed -i 's/value": "visual/value": "buttons/g' ~/.config/cinnamon/spices/workspac
 sed -i 's/value": "stark/value": "mate/g' ~/.config/cinnamon/spices/CinnVIIStarkMenu@NikoKrause/*.json
 
 
-## Install favourite extensions =================================================================================================================
+# Install favourite extensions =================================================
 cd ~/.local/share/cinnamon/extensions/
 
 wget https://cinnamon-spices.linuxmint.com/files/extensions/transparent-panels@germanfr.zip && unzip transparent-panels@germanfr.zip && rm transparent-panels@germanfr.zip
@@ -68,3 +70,13 @@ wget https://cinnamon-spices.linuxmint.com/files/extensions/gTile@shuairan.zip &
 ## Enabled extensions
 gsettings set org.cinnamon enabled-extensions "['transparent-panels@germanfr', 'gTile@shuairan']"
 
+
+# Wallpaper
+## Copy resources
+IMGDIR=~/Images/
+if [ "$LANGUAGE" == "es_ES" ]; then # change according to language
+	IMGDIR=~/Imágenes/
+fi
+cp -r wallpapers $IMGDIR
+
+gsettings set org.cinnamon.desktop.background picture-uri "file:///$IMGDIR/wallpapers/mist_forest_nord.jpg"

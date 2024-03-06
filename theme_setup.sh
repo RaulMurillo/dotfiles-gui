@@ -7,13 +7,7 @@ mkdir -p ~/.icons
 mkdir -p ~/.themes
 mkdir -p ~/.fonts
 
-IMGDIR=~/Images/
-if [ "$LANGUAGE" == "es_ES" ]; then # change according to language
-	IMGDIR=~/Imágenes/
-fi
-
 # Copy resources
-cp -r wallpapers $IMGDIR
 cp -r fonts/* ~/.fonts/
 
 # Download theme
@@ -43,10 +37,7 @@ if [ "$DESKTOP_SESSION" = "cinnamon" ]; then
 	gsettings set org.cinnamon.desktop.interface icon-theme "Papirus"
 	# Change buttons to the left
 	gsettings set org.cinnamon.desktop.wm.preferences button-layout 'close,maximize,minimize:'
-	# Wallpaper
-	gsettings set org.cinnamon.desktop.background picture-uri "file:///$IMGDIR/wallpapers/mist_forest_nord.jpg"
 fi
-
 # Apply to Plank
 dconf write /net/launchpad/plank/docks/dock1/theme "'Catppuccin-Mocha-BL'"
 
