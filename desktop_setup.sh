@@ -79,4 +79,4 @@ if [ "$LANGUAGE" == "es_ES" ]; then # change according to language
 fi
 cp -r wallpapers $IMGDIR
 
-gsettings set org.cinnamon.desktop.background picture-uri "file:///$IMGDIR/wallpapers/mist_forest_nord.jpg"
+gsettings set org.cinnamon.desktop.background picture-uri "file:///$IMGDIR/wallpapers/deer-forest.jpg"
