@@ -1,5 +1,22 @@
 #!/bin/bash
 
+# Check if the variable is passed
+if [ -z "$1" ]; then
+    echo "Installing packages in the system requires sudo permission."
+    read -rp "Do you want to install packages?: (Y/n): " user_response
+    if [ "$user_response" = "y" ] || [ "$user_response" = "Y" ] || [ "$user_response" = "" ]; then
+        SUDO_VAR="yes"
+    else
+        SUDO_VAR="no"
+    fi
+else
+    SUDO_VAR=$1
+fi
+
+if [ "$SUDO_VAR" != "yes" ]
+    exit 0
+fi
+
 sudo apt update
 sudo apt install -y software-properties-common apt-transport-https curl wget ca-certificates
 sudo apt install -y git htop vim neofetch unzip screen tmux

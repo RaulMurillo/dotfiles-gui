@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Check if the variable is passed
+if [ -z "$1" ]; then
+    SUDO_VAR=""
+else
+    SUDO_VAR=$1
+fi
+
 # Extract the value of the NAME field from /etc/os-release
 OS_NAME=$(grep "^NAME=" /etc/os-release | cut -d "=" -f 2- | tr -d '"')
 if [ "$OS_NAME" != "Linux Mint" ] && [ "$XDG_CURRENT_DESKTOP" != "cinnamon" ]; then
@@ -10,8 +17,10 @@ fi
 DIR=$PWD
 
 # Remove unused startup applications
-sudo rm /etc/xdg/autostart/mintwelcome.desktop
-sudo rm /etc/xdg/autostart/mintupdate.desktop
+if [ "$SUDO_VAR" = "yes" ]; then
+    sudo rm /etc/xdg/autostart/mintwelcome.desktop
+    sudo rm /etc/xdg/autostart/mintupdate.desktop
+fi
 
 
 # Customize the panel
@@ -50,9 +59,9 @@ APPLETS="$APPLETS]"
 
 ## Enabled applets: 'panel_name:left|center|right:position:applet_name<: optional id>'
 gsettings set org.cinnamon enabled-applets "$APPLETS"
-"['panel1:left:0:menu@cinnamon.org:1', 'panel1:left:1:panel-launchers@cinnamon.org:3', 'panel1:left:3:window-list@cinnamon.org:53', 'panel1:center:0:panel-launchers@cinnamon.org:54', 'panel1:right:0:placesCenter@scollins:26', 'panel1:right:1:workspace-switcher@cinnamon.org:51', 'panel1:right:2:spacer@cinnamon.org:49', 'panel1:right:3:notifications@cinnamon.org:6', 'panel1:right:4:sound@cinnamon.org:13', 'panel1:right:5:network@cinnamon.org:9', 'panel1:right:6:inhibit@cinnamon.org:24', 'panel1:right:7:power@cinnamon.org:11', 'panel1:right:8:systray@cinnamon.org:23', 'panel1:right:9:calendar@cinnamon.org:12', 'panel1:right:10:turn-off-monitor@zablotski:15']"
 
 ## Change applets settings
+sleep 2
 ### calendar
 sed -i '/use-custom-format/,/custom-format/ s/value": false/value": true/' ~/.config/cinnamon/spices/calendar@cinnamon.org/*.json
 sed -i 's/value": "%A, %B %e/value": "%b %e/g' ~/.config/cinnamon/spices/calendar@cinnamon.org/*.json
@@ -81,4 +90,5 @@ if [ "$LANGUAGE" == "es_ES" ]; then # change according to language
 fi
 cp -r wallpapers $IMGDIR
 
-gsettings set org.cinnamon.desktop.background picture-uri "file:///$IMGDIR/wallpapers/deer-forest.jpg"
+gsettings set org.cinnamon.desktop.background picture-uri "file:///$IMGDIR/wallpapers/astronaut.jpg"
+#gsettings set org.cinnamon.desktop.background picture-uri "file:///$IMGDIR/wallpapers/deer-forest.jpg"

@@ -1,7 +1,23 @@
 #!/bin/bash
 
+# Check if the variable is passed
+if [ -z "$1" ]; then
+    echo "Installing packages in the system requires sudo permission."
+    read -rp "Do you want to install packages?: (Y/n): " user_response
+    if [ "$user_response" = "y" ] || [ "$user_response" = "Y" ] || [ "$user_response" = "" ]; then
+        SUDO_VAR="yes"
+    else
+        SUDO_VAR="no"
+    fi
+else
+    SUDO_VAR=$1
+fi
+
 # Install Plank
-sudo apt install -y plank
+if [ "$SUDO_VAR" = "yes" ]; then
+    sudo apt install -y plank
+fi
+
 
 # Customize and config Plank
 dconf write /net/launchpad/plank/docks/dock1/zoom-enabled "true"

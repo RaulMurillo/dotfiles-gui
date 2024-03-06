@@ -2,8 +2,24 @@
 
 DIR=$PWD
 
+# Check if the variable is passed
+if [ -z "$1" ]; then
+    echo "Installing packages in the system requires sudo permission."
+    read -rp "Do you want to install packages?: (Y/n): " user_response
+    if [ "$user_response" = "y" ] || [ "$user_response" = "Y" ] || [ "$user_response" = "" ]; then
+        SUDO_VAR="yes"
+    else
+        SUDO_VAR="no"
+    fi
+else
+    SUDO_VAR=$1
+fi
+
 # Install requirements
-sudo apt install -y gnome-themes-extra gtk2-engines-murrine
+if [ "$SUDO_VAR" = "yes" ]; then
+    sudo apt install -y gnome-themes-extra gtk2-engines-murrine
+fi
+
 
 mkdir -p ~/.icons
 mkdir -p ~/.themes
@@ -46,7 +62,10 @@ fi
 dconf write /net/launchpad/plank/docks/dock1/theme "'Catppuccin-Mocha-BL'"
 
 # Customize terminal
-sudo apt install -y fonts-powerline
+## Install requirements
+if [ "$SUDO_VAR" = "yes" ]; then
+    sudo apt install -y fonts-powerline
+fi
 
 if [ "$DESKTOP_SESSION" = "cinnamon" ]; then
 	# Terminal font
