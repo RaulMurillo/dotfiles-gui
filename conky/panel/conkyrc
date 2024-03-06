@@ -127,8 +127,8 @@ ${color3}Uptime: ${alignr}${color}${uptime}
 #------------+
 # uncomment according to gpu/ssd
 ${color1}${font ConkySymbols:size=12}h${font :size=10:bold} TEMPS ${hr 2}${font}
-#${voffset 5}${color}${color3}CPU: $color${execi 5 sensors | grep "temp1" | cut -c 16-19}°C
-${voffset 5}${color}${font}${color3}CPU: $color${execi 5 sensors | grep "temp1" | cut -c 16-19}°C${color3}${alignr}GPU: $color${nvidia temp}°C
+${voffset 5}${color}${color3}CPU: $color${execi 5 sensors | grep "temp1" | cut -c 16-19}°C
+#${voffset 5}${color}${font}${color3}CPU: $color${execi 5 sensors | grep "temp1" | cut -c 16-19}°C${color3}${alignr}GPU: $color${nvidia temp}°C
 #${color}${color3}SSD:${color}${execi 5 hddtemp /dev/sda | cut -d ":" -f 3}
 
 #------------+

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# install conky and dependencies
+# Install conky and dependencies
 sudo add-apt-repository ppa:teejee2008/foss
 sudo apt update
 sudo apt install -y conky-all conky-manager2
