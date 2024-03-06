@@ -7,6 +7,7 @@ if [ "$OS_NAME" != "Linux Mint" ] && [ "$XDG_CURRENT_DESKTOP" != "cinnamon" ]; t
     exit 1
 fi
 
+DIR=$PWD
 
 # Remove unused startup applications
 sudo rm /etc/xdg/autostart/mintwelcome.desktop
@@ -16,7 +17,7 @@ sudo rm /etc/xdg/autostart/mintupdate.desktop
 # Customize the panel
 ## Modify the panel's position
 gsettings set org.cinnamon panels-enabled "['1:0:top']"
-gsettings set org.cinnamon panels-height ['1:30']
+gsettings set org.cinnamon panels-height "['1:30']"
 # https://forums.linuxmint.com/viewtopic.php?t=285940
 
 ## Install favourite applets ===================================================
@@ -25,7 +26,7 @@ wget https://cinnamon-spices.linuxmint.com/files/applets/CinnVIIStarkMenu@NikoKr
 wget https://cinnamon-spices.linuxmint.com/files/applets/weather@mockturtl.zip && unzip weather@mockturtl.zip && rm weather@mockturtl.zip
 wget https://cinnamon-spices.linuxmint.com/files/applets/color-picker@fmete.zip && unzip color-picker@fmete.zip && rm color-picker@fmete.zip
 wget https://cinnamon-spices.linuxmint.com/files/applets/show-hide-applets@mohammad-sn.zip && unzip show-hide-applets@mohammad-sn.zip && rm show-hide-applets@mohammad-sn.zip
-cd
+cd $DIR
 
 ## Set applets layout
 APPLETS="[\
@@ -69,6 +70,7 @@ wget https://cinnamon-spices.linuxmint.com/files/extensions/transparent-panels@g
 wget https://cinnamon-spices.linuxmint.com/files/extensions/gTile@shuairan.zip && unzip gTile@shuairan.zip && rm gTile@shuairan.zip
 ## Enabled extensions
 gsettings set org.cinnamon enabled-extensions "['transparent-panels@germanfr', 'gTile@shuairan']"
+cd $DIR
 
 
 # Wallpaper

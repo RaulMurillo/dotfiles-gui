@@ -1,11 +1,14 @@
 #!/bin/bash
 
+DIR=$PWD
+
 # Install requirements
 sudo apt install -y gnome-themes-extra gtk2-engines-murrine
 
 mkdir -p ~/.icons
 mkdir -p ~/.themes
 mkdir -p ~/.fonts
+mkdir -p ~/.local/share/plank/themes
 
 # Copy resources
 cp -r fonts/* ~/.fonts/
@@ -15,19 +18,20 @@ git clone https://github.com/Fausto-Korpsvart/Catppuccin-GTK-Theme.git
 cd Catppuccin-GTK-Theme
 cp -r themes/* ~/.themes/
 cp -r extra/plank/* ~/.local/share/plank/themes
-cd ..
-rm -r Catppuccin-GTK-Theme
+cd $DIR
+rm -rf Catppuccin-GTK-Theme
 
 # Download icons
 git clone https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git
 git clone https://github.com/catppuccin/papirus-folders.git
-cd papirus-icon-theme
+cd $DIR/papirus-icon-theme
 cp -r Papirus ~/.icons/
-cd ../papirus-folders
+cd $DIR/papirus-folders
 cp -r src/* ~/.icons/Papirus
 ./papirus-folders -C cat-mocha-mauve --theme Papirus
-cd ..
-rm -rf papirus-icon-theme papirus-folders
+cd $DIR
+rm -rf papirus-icon-theme
+rm -rf papirus-folders
 
 # Apply the themes and icons
 if [ "$DESKTOP_SESSION" = "cinnamon" ]; then
@@ -47,5 +51,9 @@ sudo apt install -y fonts-powerline
 if [ "$DESKTOP_SESSION" = "cinnamon" ]; then
 	# Terminal font
 	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')/ font "'Hack 10'"
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')/ use-system-font "false"
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')/ use-theme-transparency "false"
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')/ use-transparent-background "true"
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')/ background-transparency-percent "10"
 fi
 
