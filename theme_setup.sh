@@ -51,12 +51,12 @@ rm -rf papirus-folders
 
 # Apply the themes and icons
 if [ "$DESKTOP_SESSION" = "cinnamon" ]; then
-	gsettings set org.cinnamon.theme name "Catppuccin-Mocha-B"
-	gsettings set org.cinnamon.desktop.interface gtk-theme "Catppuccin-Mocha-B"
-	gsettings set org.cinnamon.desktop.wm.preferences theme "Catppuccin-Mocha-B"
-	gsettings set org.cinnamon.desktop.interface icon-theme "Papirus"
-	# Change buttons to the left
-	gsettings set org.cinnamon.desktop.wm.preferences button-layout 'close,maximize,minimize:'
+    gsettings set org.cinnamon.theme name "Catppuccin-Mocha-B"
+    gsettings set org.cinnamon.desktop.interface gtk-theme "Catppuccin-Mocha-B"
+    gsettings set org.cinnamon.desktop.wm.preferences theme "Catppuccin-Mocha-B"
+    gsettings set org.cinnamon.desktop.interface icon-theme "Papirus"
+    # Change buttons to the left
+    gsettings set org.cinnamon.desktop.wm.preferences button-layout 'close,maximize,minimize:'
 fi
 # Apply to Plank
 dconf write /net/launchpad/plank/docks/dock1/theme "'Catppuccin-Mocha-BL'"
@@ -68,8 +68,8 @@ if [ "$SUDO_VAR" = "yes" ]; then
 fi
 
 if [ "$DESKTOP_SESSION" = "cinnamon" ]; then
-	# Terminal font
-	gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')/ font "'Hack 10'"
+    # Terminal font
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')/ font "'Hack 10'"
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')/ use-system-font "false"
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')/ use-theme-transparency "false"
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')/ use-transparent-background "true"

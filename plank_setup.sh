@@ -18,6 +18,7 @@ if [ "$SUDO_VAR" = "yes" ]; then
     sudo apt install -y plank
 fi
 
+timeout 2 plank > /dev/null # Create config folders and so on
 
 # Customize and config Plank
 dconf write /net/launchpad/plank/docks/dock1/zoom-enabled "true"
@@ -37,11 +38,11 @@ spotube \
 "
 DOCKITEMS="["
 for item in $DOCKAPPS; do
-	if [ -f "/usr/share/applications/$item.desktop" ]; then
-	echo "[PlankDockItemPreferences]
+    if [ -f "/usr/share/applications/$item.desktop" ]; then
+    echo "[PlankDockItemPreferences]
 Launcher=file:///usr/share/applications/$item.desktop" > $HOME/.config/plank/dock1/launchers/$item.dockitem
-	DOCKITEMS+="'$item.dockitem', "
-	fi
+    DOCKITEMS+="'$item.dockitem', "
+    fi
 done
 # Remove the trailing comma and add the closing bracket
 DOCKITEMS="${DOCKITEMS%, }]"

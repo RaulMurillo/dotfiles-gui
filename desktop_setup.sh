@@ -51,9 +51,9 @@ APPLETS="[\
 'panel1:right:6:weather@mockturtl'\
 "
 if [ -d "/sys/class/power_supply" ]; then
-	# This is a laptop. Include battery applet
-	# 'panel1:right:XX:power@cinnamon.org:XX'
-	APPLETS="$APPLETS, 'panel1:right:99:power@cinnamon.org'"
+    # This is a laptop. Include battery applet
+    # 'panel1:right:XX:power@cinnamon.org:XX'
+    APPLETS="$APPLETS, 'panel1:right:99:power@cinnamon.org'"
 fi
 APPLETS="$APPLETS]"
 
@@ -86,9 +86,9 @@ cd $DIR
 ## Copy resources
 IMGDIR=~/Images/
 if [ "$LANGUAGE" == "es_ES" ]; then # change according to language
-	IMGDIR=~/Imágenes/
+    IMGDIR=~/Imágenes/
 fi
 cp -r wallpapers $IMGDIR
 
-gsettings set org.cinnamon.desktop.background picture-uri "file:///$IMGDIR/wallpapers/astronaut.jpg"
-#gsettings set org.cinnamon.desktop.background picture-uri "file:///$IMGDIR/wallpapers/deer-forest.jpg"
+#gsettings set org.cinnamon.desktop.background picture-uri "file:///$IMGDIR/wallpapers/astronaut.jpg"
+gsettings set org.cinnamon.desktop.background picture-uri "file:///$IMGDIR/wallpapers/deer-forest.jpg"
