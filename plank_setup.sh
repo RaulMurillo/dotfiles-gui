@@ -18,6 +18,7 @@ if [ "$SUDO_VAR" = "yes" ]; then
     sudo apt install -y plank
 fi
 
+killall plank
 timeout 2 plank > /dev/null # Create config folders and so on
 
 # Customize and config Plank

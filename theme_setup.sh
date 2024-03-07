@@ -67,7 +67,7 @@ if [ "$SUDO_VAR" = "yes" ]; then
     sudo apt install -y fonts-powerline
 fi
 
-if ! command -v gnome-terminal &> /dev/null ; then
+if command -v gnome-terminal &> /dev/null ; then
     # Gnome terminal font and transparency
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')/ font "'Hack 10'"
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')/ use-system-font "false"
