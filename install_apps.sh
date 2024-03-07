@@ -13,7 +13,7 @@ else
     SUDO_VAR=$1
 fi
 
-if [ "$SUDO_VAR" != "yes" ]
+if [ "$SUDO_VAR" != "yes" ]; then
     exit 0
 fi
 
