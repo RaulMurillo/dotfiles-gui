@@ -32,6 +32,7 @@ DOCKAPPS="org.gnome.Calendar \
 microsoft-edge \
 firefox \
 nemo \
+obsidian \
 org.gnome.meld \
 org.gnome.Terminal \
 code \

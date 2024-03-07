@@ -55,3 +55,8 @@ wget https://github.com/KRTirtho/spotube/releases/latest/download/Spotube-linux-
 sudo apt install -y ./Spotube-linux-x86_64.deb
 rm ./Spotube-linux-x86_64.deb
 
+# Obsidian - 
+wget https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.8/obsidian_1.5.8_amd64.deb
+sudo apt install -y ./obsidian_1.5.8_amd64.deb
+rm ./obsidian_1.5.8_amd64.deb
+
