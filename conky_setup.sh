@@ -33,4 +33,4 @@ X-GNOME-Autostart-Delay=2
 Comment[en_IN]=
 Comment=' > ~/.config/autostart/conky.desktop
 
-cp -r conky/ ~/.conky
+cp -rT conky/ ~/.conky
