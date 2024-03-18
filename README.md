@@ -4,6 +4,9 @@ This repository contains the files and scripts for fancy customization of a grap
 
 ![Screenshot](preview/idle.png)
 
+Even with multiple monitors:
+![Screenshot](preview/double_screen.png)
+
 The beauty is that all the customization is done by the scripts themselves so that (practically) no user interaction is required.
 
 You can even run this script directly on a fresh install!

@@ -45,8 +45,8 @@ APPLETS="[\
 'panel1:right:0:network@cinnamon.org', \
 'panel1:right:1:sound@cinnamon.org', \
 'panel1:right:2:color-picker@fmete', \
-'panel1:right:3:show-hide-applets@mohammad-sn', \
-'panel1:right:4:xapp-status@cinnamon.org', \
+'panel1:right:3:xapp-status@cinnamon.org', \
+'panel1:right:4:show-hide-applets@mohammad-sn', \
 'panel1:right:5:notifications@cinnamon.org', \
 'panel1:right:6:weather@mockturtl'\
 "
