@@ -18,6 +18,12 @@ enabled_docks="['dock1'"
 # Replicate main dock in each monitor
 MONITORS=$(xrandr --listmonitors | grep "Monitors" | awk '{print $NF}')
 if [ $MONITORS -gt 1 ]; then
+	# Set dock in primary monitor as dock1
+	# Needed if the primary monitor is not the default screen in multimonitor setups
+	primary_monitor_name=$(xrandr | grep " connected" | awk '$3 =="primary" { print $1 }')
+	dconf write /net/launchpad/plank/docks/dock1/monitor "'${primary_monitor_name}'"
+
+	# Set the rest of the docks
 	monitor_names=$(xrandr | grep " connected" | awk '$3 !="primary" { print $1 }')
 	for i in $(seq 2 $MONITORS); do
 		# Copy the main dock - new items must be pinned in the main dock and restart session
